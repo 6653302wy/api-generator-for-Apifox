@@ -539,7 +539,7 @@ export const startCreateApi = (uri: string) => {
   savepath = uri;
 
   showInputBox(
-    "Please input your Apifox export data's url(请输入从Apifox导出数据的url):",
+    "请输入从Apifox导出的数据url:",
     (val) => {
       loadApiData(val);
     },
