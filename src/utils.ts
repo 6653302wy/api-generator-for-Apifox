@@ -1,5 +1,6 @@
 import * as fs from "fs";
 import * as vscode from "vscode";
+import * as https from "https";
 
 /**
  * 新建文件
@@ -66,4 +67,23 @@ export const getValueByKey = <T>(
 
 export const showSystemMessage = (message: string) => {
   vscode.window.showInformationMessage(message);
+};
+
+export const download = (url: string): Promise<any> => {
+  return new Promise((resolve, reject) => {
+    https
+      .get(url, (res) => {
+        let data = "";
+        res.on("data", (chunk) => {
+          data += chunk;
+        });
+        res.on("end", () => {
+          resolve(data);
+        });
+      })
+      .on("error", (error) => {
+        console.error("download err: ", error);
+        reject(error);
+      });
+  });
 };

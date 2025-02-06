@@ -13,6 +13,7 @@ import {
 import { readConfig } from "./readConf";
 import { showInputBox } from "./showInputBox";
 import {
+  download,
   firstUpperCase,
   getValueByKey,
   saveTextFile,
@@ -514,6 +515,18 @@ const createModuleCodes = async () => {
 };
 
 const loadApiData = async (url: string) => {
+  // const data = await download(url);
+  // console.log("loadApiData: ", data);
+  // if (!data) {
+  //   showSystemMessage("JSON文件下载失败，请检查网络连接或URL地址是否正确。");
+  //   return;
+  // }
+
+  // const jsonData = data;
+  // apiJsonFile = jsonData;
+
+  // createModuleCodes();
+
   axios
     .get(url)
     .then((response: any) => {
@@ -525,9 +538,7 @@ const loadApiData = async (url: string) => {
 
         createModuleCodes();
       } else {
-        showSystemMessage(
-          "JSON文件下载失败，请检查网络连接或URL地址是否正确。"
-        );
+        showSystemMessage("JSON文件下载失败，请检查URL地址是否正确。");
       }
     })
     .catch((error: any) => {
@@ -539,7 +550,7 @@ export const startCreateApi = (uri: string) => {
   savepath = uri;
 
   showInputBox(
-    "请输入从Apifox导出的数据url:",
+    "请输入从Apifox导出的数据url",
     (val) => {
       loadApiData(val);
     },

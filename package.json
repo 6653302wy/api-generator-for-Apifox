@@ -1,5 +1,5 @@
 {
-	"name": "Generate API(ts) for Apifox",
+	"name": "generate-api-for-apifox",
 	"displayName": "generate-api",
 	"description": "generate api(ts) for Apifox/右键创建api请求和定义文件",
 	"version": "0.0.1",
@@ -15,7 +15,7 @@
 	"publisher": "wanpp",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/6653302wy/create-func-com-vscode.git"
+		"url": "https://github.com/6653302wy/api-generator-for-Apifox"
 	},
 	"icon": "icon.png",
 	"engines": {
