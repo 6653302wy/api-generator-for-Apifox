@@ -57,6 +57,8 @@ export interface JsonDataInfo {
   paths: { [key: string]: { [key: string]: PathInfo } };
   components: { schemas: { [key: string]: SchemaInfo } };
   servers: ServerInfo[];
+
+  swagger?: string;
 }
 
 // 基础数据类型

@@ -18,6 +18,7 @@ import {
   getValueByKey,
   saveTextFile,
   showSystemMessage,
+  showSystemWarningMessage,
 } from "./utils";
 import axios from "axios";
 
@@ -134,7 +135,7 @@ ${parseObjectStruct(subparams, api, name)}
   let defines = "";
   params.forEach((key) => {
     const obj = propertyObj[key];
-    const desc = `${obj?.description || ""} ${obj?.example ? "expamle: " : ""}${
+    const desc = `${obj?.description || ""} ${obj?.example ? "example: " : ""}${
       obj?.example || ""
     }`;
     const require = required?.includes?.(key) || false;
@@ -515,18 +516,6 @@ const createModuleCodes = async () => {
 };
 
 const loadApiData = async (url: string) => {
-  // const data = await download(url);
-  // console.log("loadApiData: ", data);
-  // if (!data) {
-  //   showSystemMessage("JSON文件下载失败，请检查网络连接或URL地址是否正确。");
-  //   return;
-  // }
-
-  // const jsonData = data;
-  // apiJsonFile = jsonData;
-
-  // createModuleCodes();
-
   axios
     .get(url)
     .then((response: any) => {
@@ -536,9 +525,15 @@ const loadApiData = async (url: string) => {
         const jsonData = response.data;
         apiJsonFile = jsonData;
 
+        if (apiJsonFile?.swagger?.includes("2.0")) {
+          showSystemWarningMessage(
+            "不支持2.0版本的Swagger，请使用OpenAPI 3.x规范的文件。"
+          );
+          return;
+        }
         createModuleCodes();
       } else {
-        showSystemMessage("JSON文件下载失败，请检查URL地址是否正确。");
+        showSystemWarningMessage("JSON文件下载失败，请检查URL地址是否正确。");
       }
     })
     .catch((error: any) => {

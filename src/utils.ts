@@ -26,7 +26,7 @@ export const saveTextFile = async (fileName: string, content: string) => {
  * 首字母大写
  * */
 export const firstUpperCase = (str: string) => {
-  return str.replace(/( |^)[a-z]/g, (L) => L.toUpperCase());
+  return str.replace(/( |^)[a-z]/g, (l) => l.toUpperCase());
 };
 
 /**
@@ -67,6 +67,9 @@ export const getValueByKey = <T>(
 
 export const showSystemMessage = (message: string) => {
   vscode.window.showInformationMessage(message);
+};
+export const showSystemWarningMessage = (message: string) => {
+  vscode.window.showWarningMessage(message);
 };
 
 export const download = (url: string): Promise<any> => {
