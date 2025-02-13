@@ -4,6 +4,8 @@
 
 这是一个 vscode 插件，用于快速创建(由 Apifox 导出的 swagger3 数据) typescript 的 API 接口请求(Apis.ts)和定义(Interface.ts)文件。
 
+插件地址: [generate-api](https://marketplace.visualstudio.com/items?itemName=wanpp.generate-api-for-apifox)
+
 ## 使用
 
 1. 选择文件夹，点击右键
