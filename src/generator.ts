@@ -292,9 +292,9 @@ const createAPIName = (api: string) => {
   const apiname = api
     .split("/")
     .map((str) => {
-      if (str.includes("-")) {
+      if (str.includes("-") || str.includes("_")) {
         return str
-          .split("-")
+          .split(/[-_]/)
           .map((subStr) => {
             return firstUpperCase(subStr);
           })

@@ -2,7 +2,7 @@
 	"name": "generate-api-for-apifox",
 	"displayName": "generate-api",
 	"description": "generate api(ts) for Apifox/右键创建api请求和定义文件",
-	"version": "0.0.1",
+	"version": "0.0.3",
 	"keywords": [
 		"apifox",
 		"typescript",
